@@ -8,6 +8,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  CLEAR_PROFILE,
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
@@ -35,7 +36,7 @@ export const loadUser = () => async (dispatch) => {
 export const register = ({ name, email, password }) => async (dispatch) => {
   const config = {
     header: {
-      'Content=Type': 'application/json',
+      'Content-Type': 'application/json',
     },
   };
 
@@ -97,6 +98,9 @@ export const login = (email, password) => async (dispatch) => {
 
 // Logout / Clear Profile
 export const logout = () => (dispatch) => {
+  dispatch({
+    type: CLEAR_PROFILE,
+  });
   dispatch({
     type: LOGOUT,
   });
